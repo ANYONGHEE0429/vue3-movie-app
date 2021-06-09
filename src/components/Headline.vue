@@ -34,4 +34,5 @@ p {
   margin: 30px 0;
   color: $gray-600;
 }
+
 </style>
