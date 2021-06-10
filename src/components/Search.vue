@@ -4,7 +4,8 @@
     v-model="title"
     class="form-control"
     type="text"
-    placeholder="Search for Movies. Search & more" />
+    placeholder="Search for Movies. Search & more"
+    @keyup.enter="apply" />
     <div class="selects">
       <select
       v-for="filter in filters"
@@ -13,7 +14,7 @@
       class="form-select">
       <option
       v-if="filter.name === 'year'"
-      value="">
+      value=""> <!--특정한 필터에서만 사용하는 옵션을 독립적으로 사용할 경우 v-if를 사용-->
       All Years</option>
         <option
         v-for="item in filter.items"
@@ -22,10 +23,16 @@
         </option>
       </select>
     </div>
+    <button 
+    class="btn btn-primary" 
+    @click="apply">
+    Apple
+    </button>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -55,6 +62,13 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    async apply() {
+      const OMDB_API_KEY = '7035c60c'
+      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${this.title}&y=${this.year}$page=1`)
+      console.log(res)
+    }
   }
 }
 </script>
@@ -79,5 +93,11 @@ export default {
       }
     }
   }
+  .btn {
+    width: 120px;
+    height: 70px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
 }
-</style>
+</style> 
