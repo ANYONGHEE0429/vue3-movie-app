@@ -65,9 +65,13 @@ export default {
   },
   methods: {
     async apply() {
-      const OMDB_API_KEY = '7035c60c'
-      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${this.title}&y=${this.year}$page=1`)
-      console.log(res)
+      this.$store.dispatch('movie/searchMovies', {  //actions를 사용하기 위해서는 dispatch를 사용
+        title: this.title,
+        type: this.type,
+        number: this.number,
+        year: this.year,
+
+      })
     }
   }
 }
@@ -90,7 +94,7 @@ export default {
       margin-right: 10px;
       &:last-child{
         margin-right: 0;
-      }
+      } 
     }
   }
   .btn {
