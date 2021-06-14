@@ -64,8 +64,9 @@ export default {
     }
   },
   methods: {
+    //Store의 Mutation을 실행할 때는 .commit() 메소드를, Actions를 실행할 때는 .dispatch() 메소드 사용
     async apply() {
-      this.$store.dispatch('movie/searchMovies', {  //actions를 사용하기 위해서는 dispatch를 사용
+      this.$store.dispatch('movie/searchMovies', {
         title: this.title,
         type: this.type,
         number: this.number,

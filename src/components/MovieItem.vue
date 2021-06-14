@@ -1,7 +1,5 @@
 <template>
-  <div>{{ movie.Title }}</div>
-  <h1> {{movie.type}}</h1>
-  <div>{{ movie.year}}</div>
+  <div>{{ movie.imdbID }}</div>
 </template>
 
 <script>
